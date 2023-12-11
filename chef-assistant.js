@@ -8,8 +8,12 @@ const red = chalk.hex("#ff4400");
 let breakfastRecipes = [
   // ... (your breakfast recipes)
   {
+    name: "Boiled egg sandwich ",
+    ingredients: ["egg 🥚", "bread 🥖", "tomato 🍅", "butter 🧈"],
+  },
+  {
     name: "Fried egg with bread ",
-    ingredients: ["egg 🥚", "bread 🥖"],
+    ingredients: ["egg 🥚", "bread 🥖", "butter 🧈"],
   },
   {
     name: "Egg and bacon",
@@ -28,12 +32,12 @@ let breakfastRecipes = [
     ingredients: ["milk 🥛", "corn flakes 🌽"],
   },
   {
-    name: "Fruit Shake",
+    name: "Fruity Milk Shake",
     ingredients: ["fruit 🍓", "milk 🥛", "sugar 🍚"],
   },
   {
-    name: "Fruit Smoothie",
-    ingredients: ["fruit 🍓"],
+    name: "Cheese Omelette",
+    ingredients: ["egg 🥚", "cheese 🧀", "bread 🥖"],
   },
   {
     name: "Tomato Omelette with bread",
@@ -83,7 +87,7 @@ let lunchRecipes = [
   },
   {
     name: "tunafish sandwich",
-    ingredients: ["tuna 🐟", "bread 🥖", "onion 🧅"],
+    ingredients: ["tuna 🐟", "bread 🥖", "onion 🧅", "tomato 🍅"],
   },
   {
     name: "rice with chicken",
@@ -237,7 +241,7 @@ function getUserIngredients(mealChoice) {
     selectedIndices = userInput
       .split(",")
       .map((num) => parseInt(num.trim()) - 1);
-
+      selectedIndices = [...new Set(selectedIndices)];
     // Check if all selected indices are valid
     validInput = selectedIndices.every(
       (index) => index >= 0 && index < ingredientOptions[mealChoice].length
